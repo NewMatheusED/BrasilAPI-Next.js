@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { getCEP } from '../data/api';
+import Container from '../ui/container';
 import HeaderTitle from '../ui/headerTitle';
 import ErrorMessage from '../ui/errorMessage';
 import InputField from '../ui/inputField';
@@ -65,7 +66,7 @@ export default function Cep() {
                 if (error instanceof Error) {
                     setError(error.message);
                 } else {
-                    setError('An unknown error occurred');
+                    setError('Erro desconhecido ao buscar CEP');
                 }
                 setCepData(null);
             } finally {
@@ -92,13 +93,13 @@ export default function Cep() {
         } else {
             setPosition(null);
             if (cepData) {
-                setError('Não foi possível encontrar a localização');
+                setError('Não foi possível renderizar o mapa');
             }
         }
     }, [cepData]);
 
     return (
-        <div className="bg-zinc-800 text-zinc-100 h-screen p-6">
+        <Container>
             <HeaderTitle title="CEP" />
             <InputField
                 value={cep}
@@ -108,7 +109,7 @@ export default function Cep() {
             {loading && <LoadingIndicator message="Buscando informações do CEP..." />}
             {error && <ErrorMessage message={error} />}
             {info && <InfoMessage message={info} />}
-            {cepData ? (
+            {cepData && (
                 <div>
                     <p>CEP: {cepData.cep ?? 'N/A'}</p>
                     <p>Logradouro: {cepData.street ?? 'N/A'}</p>
@@ -129,7 +130,7 @@ export default function Cep() {
                         </MapContainer>
                     )}
                 </div>
-            ) : null}
-        </div>
+            )}
+        </Container>
     );
 }
