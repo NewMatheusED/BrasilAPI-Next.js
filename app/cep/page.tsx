@@ -117,7 +117,7 @@ export default function Cep() {
                     <p>Cidade: {cepData.city ?? 'N/A'}</p>
                     <p>Estado: {cepData.state ?? 'N/A'}</p>
                     {isClient && position && (
-                        <MapContainer center={position} zoom={13} style={{ height: "200px", width: "100%" }}>
+                        <MapContainer center={position} zoom={13} style={{ height: "500px", width: "100%" }}>
                             <TileLayer
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

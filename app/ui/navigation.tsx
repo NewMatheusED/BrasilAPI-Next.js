@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { BsBank2 } from "react-icons/bs";
 import { FaMapMarkerAlt, FaPhone } from "react-icons/fa";
+import { PiConfettiFill } from "react-icons/pi";
 
 const Navigation = () => {
 
     const links = [
         {name: 'CEP', path: '/cep', icon:  <FaMapMarkerAlt />},
         {name: 'Bank', path: '/bank', icon: <BsBank2 />},
-        {name: 'DDD', path: '/ddd', icon: <FaPhone />}
+        {name: 'DDD', path: '/ddd', icon: <FaPhone />},
+        {name: 'Feriado', path: '/feriado', icon: <PiConfettiFill />}
     ]
 
     return (

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FaHome, FaMapMarkerAlt, FaPhone, FaBars } from 'react-icons/fa';
 import { BsBank2 } from 'react-icons/bs';
+import { PiConfettiFill } from "react-icons/pi";
 
 export default function SideNav() {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -13,7 +14,8 @@ export default function SideNav() {
         { name: 'Home', path: '/', icon: <FaHome /> },
         { name: 'CEP', path: '/cep', icon: <FaMapMarkerAlt /> },
         { name: 'Bank', path: '/bank', icon: <BsBank2 /> },
-        { name: 'DDD', path: '/ddd', icon: <FaPhone /> }
+        { name: 'DDD', path: '/ddd', icon: <FaPhone /> },
+        { name: 'Feriado', path: '/feriado', icon: <PiConfettiFill /> },
     ];
 
     const pathname = usePathname();

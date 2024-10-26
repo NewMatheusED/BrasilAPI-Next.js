@@ -55,3 +55,21 @@ export async function getDDD(ddd: string) {
         throw new Error('Erro ao buscar DDD');
     }
 }
+
+export async function getFeriado(year: string) {
+    try {
+        if (!year) {
+            throw new Error('Ano não pode ser vazio')
+        }
+        if (year.toString().length !== 4) {
+            throw new Error('Ano deve conter 4 dígitos')
+        }
+        const response = await axios.get(`${urlBase}/feriados/v1/${year}`)
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.message || 'Erro ao buscar o ano')
+        }
+        throw new Error('Erro ao buscar o ano')
+    }
+}
